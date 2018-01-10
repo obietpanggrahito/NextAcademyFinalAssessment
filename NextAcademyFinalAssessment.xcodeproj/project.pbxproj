@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3D134EB520060A0F00D019EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D134EB420060A0F00D019EC /* AppDelegate.swift */; };
-		3D134EB720060A0F00D019EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D134EB620060A0F00D019EC /* ViewController.swift */; };
 		3D134EBA20060A0F00D019EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EB820060A0F00D019EC /* Main.storyboard */; };
 		3D134EBC20060A0F00D019EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EBB20060A0F00D019EC /* Assets.xcassets */; };
 		3D134EBF20060A0F00D019EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EBD20060A0F00D019EC /* LaunchScreen.storyboard */; };
 		3D134EC720060EDC00D019EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EC620060EDC00D019EC /* GoogleService-Info.plist */; };
+		3D134ECA2006117000D019EC /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EC92006117000D019EC /* Auth.storyboard */; };
+		3D134ED02006127600D019EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D134ECF2006127600D019EC /* LoginViewController.swift */; };
+		3D134ED22006128300D019EC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D134ED12006128300D019EC /* SignUpViewController.swift */; };
+		3D134ED420061E7C00D019EC /* SkyScannerTexfieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D134ED320061E7C00D019EC /* SkyScannerTexfieldManager.swift */; };
 		8E643D7C60A78497114F4BEE /* Pods_NextAcademyFinalAssessment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,12 +23,15 @@
 		0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextAcademyFinalAssessment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D134EB120060A0F00D019EC /* NextAcademyFinalAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NextAcademyFinalAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D134EB420060A0F00D019EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D134EB620060A0F00D019EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D134EB920060A0F00D019EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D134EBB20060A0F00D019EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D134EBE20060A0F00D019EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D134EC020060A0F00D019EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D134EC620060EDC00D019EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D134EC92006117000D019EC /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		3D134ECF2006127600D019EC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3D134ED12006128300D019EC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3D134ED320061E7C00D019EC /* SkyScannerTexfieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyScannerTexfieldManager.swift; sourceTree = "<group>"; };
 		46F6AE1116B86124F9A53096 /* Pods-NextAcademyFinalAssessment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.debug.xcconfig"; sourceTree = "<group>"; };
 		579BA209DB26477271F0B1EB /* Pods-NextAcademyFinalAssessment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,15 +69,58 @@
 		3D134EB320060A0F00D019EC /* NextAcademyFinalAssessment */ = {
 			isa = PBXGroup;
 			children = (
-				3D134EB420060A0F00D019EC /* AppDelegate.swift */,
-				3D134EB620060A0F00D019EC /* ViewController.swift */,
-				3D134EB820060A0F00D019EC /* Main.storyboard */,
-				3D134EBB20060A0F00D019EC /* Assets.xcassets */,
-				3D134EBD20060A0F00D019EC /* LaunchScreen.storyboard */,
+				3D134EC82006113300D019EC /* Resources */,
+				3D134ECB2006119C00D019EC /* Models */,
+				3D134ECE200611E100D019EC /* Views */,
+				3D134ECC200611A300D019EC /* Controllers */,
+				3D134ECD200611BA00D019EC /* Utilities */,
 				3D134EC020060A0F00D019EC /* Info.plist */,
 				3D134EC620060EDC00D019EC /* GoogleService-Info.plist */,
 			);
 			path = NextAcademyFinalAssessment;
+			sourceTree = "<group>";
+		};
+		3D134EC82006113300D019EC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D134EB420060A0F00D019EC /* AppDelegate.swift */,
+				3D134EBD20060A0F00D019EC /* LaunchScreen.storyboard */,
+				3D134EC92006117000D019EC /* Auth.storyboard */,
+				3D134EB820060A0F00D019EC /* Main.storyboard */,
+				3D134EBB20060A0F00D019EC /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3D134ECB2006119C00D019EC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3D134ECC200611A300D019EC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D134ECF2006127600D019EC /* LoginViewController.swift */,
+				3D134ED12006128300D019EC /* SignUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3D134ECD200611BA00D019EC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3D134ED320061E7C00D019EC /* SkyScannerTexfieldManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3D134ECE200611E100D019EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6497E03B28565BEA9386847B /* Frameworks */ = {
@@ -155,6 +204,7 @@
 			files = (
 				3D134EBF20060A0F00D019EC /* LaunchScreen.storyboard in Resources */,
 				3D134EC720060EDC00D019EC /* GoogleService-Info.plist in Resources */,
+				3D134ECA2006117000D019EC /* Auth.storyboard in Resources */,
 				3D134EBC20060A0F00D019EC /* Assets.xcassets in Resources */,
 				3D134EBA20060A0F00D019EC /* Main.storyboard in Resources */,
 			);
@@ -172,6 +222,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -179,6 +231,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -227,8 +281,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D134EB720060A0F00D019EC /* ViewController.swift in Sources */,
+				3D134ED22006128300D019EC /* SignUpViewController.swift in Sources */,
+				3D134ED02006127600D019EC /* LoginViewController.swift in Sources */,
 				3D134EB520060A0F00D019EC /* AppDelegate.swift in Sources */,
+				3D134ED420061E7C00D019EC /* SkyScannerTexfieldManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
