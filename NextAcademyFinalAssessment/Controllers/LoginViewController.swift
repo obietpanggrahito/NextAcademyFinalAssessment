@@ -14,12 +14,14 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField! {
         didSet {
+            emailTextField.delegate = self
             SkyScannerTextFieldManager.shared.customizeTextField(textField: emailTextField, title: "Email Address")
         }
     }
     
     @IBOutlet weak var passwordTextField: SkyFloatingLabelTextField! {
         didSet {
+            passwordTextField.delegate = self
             SkyScannerTextFieldManager.shared.customizeTextField(textField: passwordTextField, title: "Password")
         }
     }
@@ -36,9 +38,6 @@ class LoginViewController: UIViewController {
             signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         }
     }
-    
-    // MARK: Variables
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,12 +58,56 @@ class LoginViewController: UIViewController {
         signUpButton.setAttributedTitle(stringContent, for: .normal)
     }
     
-    // MARK: Actions
-    @objc func loginButtonTapped() {
-        
+    @objc func signUpButtonTapped() {
+        let authStoryboard = UIStoryboard(name: "Auth", bundle: nil)
+        if let controller = authStoryboard.instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController {
+            present(controller, animated: true, completion: nil)
+        }
     }
     
-    @objc func signUpButtonTapped() {
+    // MARK: Login Proccess
+    @objc func loginButtonTapped() {
+        guard let email = emailTextField.text,
+            let password = passwordTextField.text
+            else { return }
+        
+        if email == "" || password == "" {
+            AlertManager.shared.presentDefaultAlert(title: "Login Error", message: "Email / password cannot be empty", actionTitle: "OK", on: self)
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        Auth.auth().signIn(with: credential, completion: { (user: User?, error: Error?) in
+            if user != nil {
+                self.directUserToListingViewController()
+            }
+            else {
+                AlertManager.shared.presentDefaultAlert(title: "Login Error", message: "\(error?.localizedDescription ?? "Please try again")", actionTitle: "OK", on: self)
+            }
+        })
+    }
+    
+    func directUserToListingViewController() {
         
     }
 }
+
+extension LoginViewController : UITextFieldDelegate {
+    
+    // MARK: Text Field Delegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let nextTextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextTextField.becomeFirstResponder()
+        }
+        else {
+            if textField.returnKeyType == UIReturnKeyType.go {
+                loginButtonTapped()
+            }
+            else {
+                textField.resignFirstResponder()
+            }
+        }
+        return false
+    }
+}
+
