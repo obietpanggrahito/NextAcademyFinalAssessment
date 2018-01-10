@@ -12,9 +12,12 @@
 		3D134EBA20060A0F00D019EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EB820060A0F00D019EC /* Main.storyboard */; };
 		3D134EBC20060A0F00D019EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EBB20060A0F00D019EC /* Assets.xcassets */; };
 		3D134EBF20060A0F00D019EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EBD20060A0F00D019EC /* LaunchScreen.storyboard */; };
+		3D134EC720060EDC00D019EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D134EC620060EDC00D019EC /* GoogleService-Info.plist */; };
+		8E643D7C60A78497114F4BEE /* Pods_NextAcademyFinalAssessment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NextAcademyFinalAssessment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D134EB120060A0F00D019EC /* NextAcademyFinalAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NextAcademyFinalAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D134EB420060A0F00D019EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D134EB620060A0F00D019EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		3D134EBB20060A0F00D019EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D134EBE20060A0F00D019EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D134EC020060A0F00D019EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D134EC620060EDC00D019EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		46F6AE1116B86124F9A53096 /* Pods-NextAcademyFinalAssessment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.debug.xcconfig"; sourceTree = "<group>"; };
+		579BA209DB26477271F0B1EB /* Pods-NextAcademyFinalAssessment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E643D7C60A78497114F4BEE /* Pods_NextAcademyFinalAssessment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				3D134EB320060A0F00D019EC /* NextAcademyFinalAssessment */,
 				3D134EB220060A0F00D019EC /* Products */,
+				B0963947A85BB9FE2A9111C1 /* Pods */,
+				6497E03B28565BEA9386847B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,8 +69,26 @@
 				3D134EBB20060A0F00D019EC /* Assets.xcassets */,
 				3D134EBD20060A0F00D019EC /* LaunchScreen.storyboard */,
 				3D134EC020060A0F00D019EC /* Info.plist */,
+				3D134EC620060EDC00D019EC /* GoogleService-Info.plist */,
 			);
 			path = NextAcademyFinalAssessment;
+			sourceTree = "<group>";
+		};
+		6497E03B28565BEA9386847B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0963947A85BB9FE2A9111C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46F6AE1116B86124F9A53096 /* Pods-NextAcademyFinalAssessment.debug.xcconfig */,
+				579BA209DB26477271F0B1EB /* Pods-NextAcademyFinalAssessment.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D134EC320060A0F00D019EC /* Build configuration list for PBXNativeTarget "NextAcademyFinalAssessment" */;
 			buildPhases = (
+				51BF4EAC2D691C917777E896 /* [CP] Check Pods Manifest.lock */,
 				3D134EAD20060A0F00D019EC /* Sources */,
 				3D134EAE20060A0F00D019EC /* Frameworks */,
 				3D134EAF20060A0F00D019EC /* Resources */,
+				0D0910CAA9AAA530BCB03EFE /* [CP] Embed Pods Frameworks */,
+				2779878E4463E2ACB0325E72 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -124,12 +154,73 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D134EBF20060A0F00D019EC /* LaunchScreen.storyboard in Resources */,
+				3D134EC720060EDC00D019EC /* GoogleService-Info.plist in Resources */,
 				3D134EBC20060A0F00D019EC /* Assets.xcassets in Resources */,
 				3D134EBA20060A0F00D019EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D0910CAA9AAA530BCB03EFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2779878E4463E2ACB0325E72 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51BF4EAC2D691C917777E896 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NextAcademyFinalAssessment-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3D134EAD20060A0F00D019EC /* Sources */ = {
@@ -272,6 +363,7 @@
 		};
 		3D134EC420060A0F00D019EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F6AE1116B86124F9A53096 /* Pods-NextAcademyFinalAssessment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +379,7 @@
 		};
 		3D134EC520060A0F00D019EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 579BA209DB26477271F0B1EB /* Pods-NextAcademyFinalAssessment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
