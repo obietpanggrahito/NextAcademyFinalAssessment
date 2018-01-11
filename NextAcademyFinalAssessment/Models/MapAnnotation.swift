@@ -21,7 +21,7 @@ class MapAnnotation: NSObject, MKAnnotation {
     }
     
     var region: MKCoordinateRegion {
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let span = MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025)
         return MKCoordinateRegion(center: coordinate, span: span)
     }
 }

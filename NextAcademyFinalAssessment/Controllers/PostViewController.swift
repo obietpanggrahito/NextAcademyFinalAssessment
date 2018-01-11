@@ -145,6 +145,16 @@ extension PostViewController: UITextFieldDelegate {
         }
         return false
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == venueTextField {
+            textField.resignFirstResponder()
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let controller = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
+                navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+    }
 }
 
 extension PostViewController: UITextViewDelegate {
