@@ -115,6 +115,7 @@
                 <navigationController storyboardIdentifier="HomeViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bRu-QT-MVs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home" id="dDX-Wa-uz3">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <color key="badgeColor" red="0.16862745100000001" green="0.65098039220000004" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9b9-Py-SA8">
@@ -154,6 +155,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1st-9V-t4t" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="user" selectedImage="user" id="MRS-OB-TQG">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <color key="badgeColor" red="0.16862745100000001" green="0.65098039220000004" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jBh-3Z-vzc">

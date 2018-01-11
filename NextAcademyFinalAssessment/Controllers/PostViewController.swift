@@ -23,9 +23,15 @@ class PostViewController: UIViewController {
     }
     
     func getFormattedDate() {
-        DateFormatterManager.shared.storeDateFormatter.string(from: Date())
-       let date =  DateFormatterManager.shared.storeDateFormatter.date(from: "2018-01-23")
-        let dateString = DateFormatterManager.shared.MonthDateFormatter.string(from: date!)
-        print(dateString)
+        let storedDateString = DateFormatterManager.shared.storeDateFormatter.string(from: Date())
+        
+        //MARK: getting the day and month string from stored dateString.
+        
+        guard let date = DateFormatterManager.shared.storeDateFormatter.date(from: storedDateString) else {return}
+        
+        let monthName = DateFormatterManager.shared.monthFormatter.string(from: date)
+        
+        let day = DateFormatterManager.shared.dayFormatter.string(from: date)
+
     }
 }

@@ -28,11 +28,12 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: Variables
+    var ref = DatabaseReference()
     var events = [Events]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let ref = Database.database().reference()
+        ref = Database.database().reference()
         fetchEvents()
     }
     

@@ -11,15 +11,6 @@ import Foundation
 class DateFormatterManager {
     static let shared = DateFormatterManager()
     
-    let MonthDateFormatter : DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.dateStyle = DateFormatter.Style.short
-        formatter.dateFormat = "MMM"
-        formatter.timeStyle = DateFormatter.Style.none
-        return formatter
-    }()
-    
     let storeDateFormatter : DateFormatter = {
         let formatter = DateFormatter()
         let locale = Locale(identifier: "en_US_POSIX")
@@ -28,4 +19,16 @@ class DateFormatterManager {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
+    
+    let monthFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM"
+        return formatter
+    }()
+    let dayFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd"
+        return formatter
+    }()
+    
 }
