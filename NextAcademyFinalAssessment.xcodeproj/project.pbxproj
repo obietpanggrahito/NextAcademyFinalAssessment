@@ -25,6 +25,7 @@
 		3DC124B920071EDD00873B61 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC124B720071EDD00873B61 /* EventTableViewCell.xib */; };
 		3DC124BB2007255800873B61 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BA2007255800873B61 /* Events.swift */; };
 		3DC124BD20073B7600873B61 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BC20073B7600873B61 /* DateFormatterManager.swift */; };
+		3DC124BF20074CBA00873B61 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */; };
 		8E643D7C60A78497114F4BEE /* Pods_NextAcademyFinalAssessment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		3DC124B720071EDD00873B61 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		3DC124BA2007255800873B61 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		3DC124BC20073B7600873B61 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		46F6AE1116B86124F9A53096 /* Pods-NextAcademyFinalAssessment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.debug.xcconfig"; sourceTree = "<group>"; };
 		579BA209DB26477271F0B1EB /* Pods-NextAcademyFinalAssessment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 				3D134ED320061E7C00D019EC /* SkyScannerTexfieldManager.swift */,
 				3D134ED520067D3C00D019EC /* AlertManager.swift */,
 				3DC124BC20073B7600873B61 /* DateFormatterManager.swift */,
+				3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				3DC124B520071AC100873B61 /* ProfileViewController.swift in Sources */,
 				3DC124AF20071A8B00873B61 /* HomeViewController.swift in Sources */,
 				3DC124B820071EDD00873B61 /* EventTableViewCell.swift in Sources */,
+				3DC124BF20074CBA00873B61 /* ImagePickerManager.swift in Sources */,
 				3DC124B320071AB200873B61 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

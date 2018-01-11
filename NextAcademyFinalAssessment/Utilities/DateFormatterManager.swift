@@ -11,6 +11,13 @@ import Foundation
 class DateFormatterManager {
     static let shared = DateFormatterManager()
     
+    let showADateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
     let storeDateFormatter : DateFormatter = {
         let formatter = DateFormatter()
         let locale = Locale(identifier: "en_US_POSIX")
@@ -25,6 +32,7 @@ class DateFormatterManager {
         formatter.dateFormat = "MMM"
         return formatter
     }()
+    
     let dayFormatter : DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd"
