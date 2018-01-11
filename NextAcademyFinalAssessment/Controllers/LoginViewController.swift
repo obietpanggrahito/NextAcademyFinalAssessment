@@ -89,7 +89,10 @@ class LoginViewController: UIViewController {
     }
     
     func directUserToListingViewController() {
-        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            present(controller, animated: true, completion: nil)
+        }
     }
 }
 

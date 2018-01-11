@@ -49,7 +49,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -94,7 +93,10 @@ class SignUpViewController: UIViewController {
     }
     
     func directUserToListingViewController() {
-        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            present(controller, animated: true, completion: nil)
+        }
     }
 }
 
@@ -152,4 +154,3 @@ extension SignUpViewController : UITextFieldDelegate {
         }
     }
 }
-
