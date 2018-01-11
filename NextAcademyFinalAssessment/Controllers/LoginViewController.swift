@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton! {
         didSet {
             loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+            loginButton.isEnabled = false
         }
     }
     
@@ -108,6 +109,43 @@ extension LoginViewController : UITextFieldDelegate {
             }
         }
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
+                
+                if textField == emailTextField {
+                    if text.count < 3 || !text.contains("@") {
+                        floatingLabelTextField.errorMessage = "Invalid Email Address"
+                    }
+                    else {
+                        floatingLabelTextField.errorMessage = ""
+                    }
+                }
+                else {
+                    if text.count < 5 {
+                        floatingLabelTextField.errorMessage = "Password is too short"
+                    }
+                    else {
+                        floatingLabelTextField.errorMessage = ""
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        if emailTextField.text != "" && passwordTextField.text != "" {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = #colorLiteral(red: 0.168627451, green: 0.6509803922, blue: 0.1725490196, alpha: 1)
+        }
+        else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = #colorLiteral(red: 0.168627451, green: 0.6509803922, blue: 0.1725490196, alpha: 0.3005672089)
+        }
+
     }
 }
 
