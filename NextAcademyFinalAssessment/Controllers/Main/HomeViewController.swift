@@ -65,13 +65,11 @@ class HomeViewController: UIViewController {
     func sortBasedOnDistance() {
         for event in events {
             let eventLocation = CLLocation(latitude: event.latitude, longitude: event.longitude)
-            
             let distance = currentLocation.distance(from: eventLocation)
-            print(distance)
-            
-            
-        
+            event.distance = distance
         }
+        events.sort{$0.distance < $1.distance}
+        eventTableView.reloadData()
     }
     
     // MARK: Firebase Call

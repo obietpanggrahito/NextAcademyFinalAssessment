@@ -19,6 +19,8 @@ class Event {
     var timeStamp = 0
     var uid = ""
     var venue = ""
+    var distance = 0.0
+    
     init() {}
     
     init(id: String, details: [String:Any]) {
@@ -42,6 +44,7 @@ class Event {
             self.timeStamp = timeStamp
             self.uid = uid
             self.venue = venue
+            self.distance = 0.0
         }
     }
 }
