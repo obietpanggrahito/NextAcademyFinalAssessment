@@ -9,6 +9,7 @@
 import Foundation
 
 class Event {
+    var id = ""
     var date = ""
     var description = ""
     var imageURL = ""
@@ -20,17 +21,18 @@ class Event {
     var venue = ""
     init() {}
     
-    init(eventDetails: [String:Any]) {
-        if let date = eventDetails["date"] as? String,
-            let description = eventDetails["description"] as? String,
-            let imageURL = eventDetails["imageURL"] as? String,
-            let name = eventDetails["name"] as? String,
-            let latitude = eventDetails["latitude"] as? Double,
-            let longitude = eventDetails["longitude"] as? Double,
-            let timeStamp = eventDetails["timeStamp"] as? Int,
-            let uid = eventDetails["uid"] as? String,
-            let venue = eventDetails["venue"] as? String {
+    init(id: String, details: [String:Any]) {
+        if let date = details["date"] as? String,
+            let description = details["description"] as? String,
+            let imageURL = details["imageURL"] as? String,
+            let name = details["name"] as? String,
+            let latitude = details["latitude"] as? Double,
+            let longitude = details["longitude"] as? Double,
+            let timeStamp = details["timeStamp"] as? Int,
+            let uid = details["uid"] as? String,
+            let venue = details["venue"] as? String {
             
+            self.id = id
             self.date = date
             self.description = description
             self.imageURL = imageURL

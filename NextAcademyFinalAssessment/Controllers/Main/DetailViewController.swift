@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class DetailViewController: UIViewController {
 
@@ -37,22 +38,55 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var joinButton: UIButton! {
-        didSet {
-            joinButton.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
-        }
-    }
+    @IBOutlet weak var joinButton: UIButton!
     
+    // MARK: Variables
     var event = Event()
     var eventImage = UIImage()
+    var ref = DatabaseReference()
+    var currentUserID = ""
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Event Details"
+        checkWetherUserJoinedThisEventOrNot()
         setupData()
     }
     
+    func checkWetherUserJoinedThisEventOrNot() {
+        ref = Database.database().reference()
+        guard let currentUserID = Auth.auth().currentUser?.uid
+            else { return }
+        self.currentUserID = currentUserID
+        
+        ref.child("users").child(currentUserID).child("joinedEvents").observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.hasChild(self.event.id) {
+                self.setupJoinButton(joinedEvent: true)
+            }
+            else {
+                self.setupJoinButton(joinedEvent: false)
+            }
+        }
+    }
+    
     // MARK: Setups
+    func setupJoinButton(joinedEvent: Bool) {
+        if joinedEvent {
+            joinButton.setTitle("Cancel", for: .normal)
+            joinButton.backgroundColor = #colorLiteral(red: 1, green: 0.5764705882, blue: 0, alpha: 1)
+            joinButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        }
+        else {
+            joinButton.setTitle("Join", for: .normal)
+            joinButton.backgroundColor = #colorLiteral(red: 0.168627451, green: 0.6509803922, blue: 0.1725490196, alpha: 1)
+            joinButton.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
+        }
+    }
+    
     func setupData() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-mm-dd"
@@ -78,6 +112,16 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: Actions
+    @objc func cancelButtonTapped() {
+        ref.child("users").child(currentUserID).child("joinedEvents").child(event.id).removeValue()
+        setupJoinButton(joinedEvent: false)
+    }
+    
+    @objc func joinButtonTapped() {
+        ref.child("users").child(currentUserID).child("joinedEvents").updateChildValues([event.id : true])
+        setupJoinButton(joinedEvent: true)
+    }
+    
     @objc func mapViewTapped() {
         let regionDistance :  CLLocationDistance = 1000
         let coordinates = CLLocationCoordinate2D(latitude: event.latitude, longitude: event.longitude)
@@ -89,10 +133,6 @@ class DetailViewController: UIViewController {
         let mapItem = MKMapItem(placemark: placemarks)
         mapItem.name = event.venue
         mapItem.openInMaps(launchOptions: options)
-    }
-    
-    @objc func joinButtonTapped() {
-        
     }
 }
 

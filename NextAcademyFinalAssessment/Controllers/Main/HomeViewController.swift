@@ -54,7 +54,8 @@ class HomeViewController: UIViewController {
                 let eventDetails = childSnapshot.value as? [String : Any]
                     else { return }
                 
-                let event = Event(eventDetails: eventDetails)
+                let eventID = childSnapshot.key
+                let event = Event(id: eventID, details: eventDetails)
                 self.events.append(event)
                 if self.events.count == snapshot.childrenCount {
                     self.eventTableView.reloadData()

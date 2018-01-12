@@ -119,9 +119,16 @@ class PostViewController: UIViewController {
                 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
                     ActivityIndicatorManager.shared.dismissActivityIndicator()
-                    self.navigationController?.popViewController(animated: true)
+                    self.goBackToHome()
                 })
             }
+        }
+    }
+    
+    func goBackToHome() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            present(controller, animated: true, completion: nil)
         }
     }
 }
