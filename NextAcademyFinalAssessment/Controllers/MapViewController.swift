@@ -23,9 +23,12 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: Variables
     let locationManager = CLLocationManager()
     var selectedLatitude = 0.0
     var selectedLongitude = 0.0
+    var venue = ""
+    var getVenueAndLocation : ((_ venue: String, _ latitude: Double, _ longitude: Double)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +54,8 @@ class MapViewController: UIViewController {
     }
     
     @objc func useLocationButtonTapped() {
-        
+        getVenueAndLocation?(venue, selectedLatitude, selectedLongitude)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -96,6 +100,11 @@ extension MapViewController: MKMapViewDelegate {
             guard let droppedAt = view.annotation?.coordinate else { return }
             selectedLatitude = droppedAt.latitude
             selectedLongitude = droppedAt.longitude
+            
+            let location = CLLocation(latitude: selectedLatitude, longitude: selectedLongitude)
+            GeocoderManager.shared.getAddressFromALocation(location: location, completion: { (address) in
+                self.venue = address
+            })
         }
     }
 }

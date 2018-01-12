@@ -60,8 +60,12 @@ class PostViewController: UIViewController {
         }
     }
     
+    // MARK: Variables
     let datePicker = UIDatePicker()
     var choosenDate = Date()
+    var venue = ""
+    var latitude = 0.0
+    var longitude = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +130,7 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            eventImageView.contentMode = .scaleAspectFill
+            eventImageView.contentMode = .scaleAspectFill // FIXME: set to aspectfill but don't go out from the boundary
             eventImageView.image = pickedImage
         }
         picker.dismiss(animated: true, completion: nil)
@@ -151,7 +155,15 @@ extension PostViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             if let controller = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
+                
+                controller.getVenueAndLocation = {(venue, latitude, longitude) in
+                    self.venue = venue
+                    self.latitude = latitude
+                    self.longitude = longitude
+                }
+                self.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller, animated: true)
+                self.hidesBottomBarWhenPushed = false
             }
         }
     }
