@@ -33,7 +33,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Select Venue Location"
-        // FIXME: hide the tabbar at the bottom
+        ActivityIndicatorManager.shared.presentActivityIndicator(on: self, view: self.view)
         setupCLLocationManager()
     }
     
@@ -46,6 +46,7 @@ class MapViewController: UIViewController {
     }
     
     func setupStartingLocation(latitude: Double, longitude: Double) {
+        ActivityIndicatorManager.shared.dismissActivityIndicator()
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let annotation = MapAnnotation(coordinate: coordinate, title: "yea", subtitle: "cmon")

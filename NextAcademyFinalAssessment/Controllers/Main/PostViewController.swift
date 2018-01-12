@@ -27,7 +27,7 @@ class PostViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var venueTextField: SkyFloatingLabelTextField! {
+    @IBOutlet weak var venueTextField: SkyFloatingLabelTextField! { // FIXME: maybe change this to textview
         didSet {
             venueTextField.delegate = self
             SkyScannerTextFieldManager.shared.customizeTextField(textField: venueTextField, title: "Venue")
@@ -62,6 +62,7 @@ class PostViewController: UIViewController {
     
     // MARK: Variables
     let datePicker = UIDatePicker()
+    var eventImage = UIImage()
     var choosenDate = Date()
     var venue = ""
     var latitude = 0.0
@@ -100,16 +101,32 @@ class PostViewController: UIViewController {
     }
     
     @objc func publishButtonTapped() {
+        ActivityIndicatorManager.shared.presentActivityIndicator(on: self, view: self.view)
         
-    }
-    
-    func postNewEvent() {
+        guard let currentUserID = Auth.auth().currentUser?.uid,
+        let eventName = eventNameTextField.text,
+        let description = descriptionTextView.text
+            else { return }
         
+        let timeStamp = ServerValue.timestamp()
+        let ref = Database.database().reference()
+        let choosenDateInString = DateFormatterManager.shared.storeDateFormatter.string(from: choosenDate)
+        
+        FirebaseStorageManager.shared.uploadImageToStorage(eventImage, path: "events", imageName: eventName) { (urlString, errorMessage) in
+            if errorMessage == nil {
+                let post : [String : Any] = ["date": choosenDateInString, "description": description, "imageURL": urlString ?? "http://iosicongallery.com/img/512/eventbrite-2017-04-06.png", "name": eventName, "latitude": self.latitude, "longitude": self.longitude, "timeStamp": timeStamp, "uid": currentUserID, "venue": self.venue]
+                ref.child("events").childByAutoId().updateChildValues(post)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now(), execute: {
+                    ActivityIndicatorManager.shared.dismissActivityIndicator()
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
+        }
     }
     
     func getFormattedDate() {
-        let storedDateString = DateFormatterManager.shared.storeDateFormatter.string(from: Date())
-        
+        let storedDateString = DateFormatterManager.shared.storeDateFormatter.string(from: choosenDate)
         //getting the day and month string from stored dateString.
         
         guard let date = DateFormatterManager.shared.storeDateFormatter.date(from: storedDateString) else {return}
@@ -130,8 +147,10 @@ extension PostViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            eventImageView.contentMode = .scaleAspectFill // FIXME: set to aspectfill but don't go out from the boundary
+            eventImageView.contentMode = .scaleAspectFill
+            eventImageView.clipsToBounds = true
             eventImageView.image = pickedImage
+            eventImage = pickedImage
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -160,6 +179,7 @@ extension PostViewController: UITextFieldDelegate {
                     self.venue = venue
                     self.latitude = latitude
                     self.longitude = longitude
+                    self.venueTextField.text = venue
                 }
                 self.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(controller, animated: true)

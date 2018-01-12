@@ -17,11 +17,10 @@ class GeocoderManager {
             if let error = error {
                 print("Get Address Error: \(error)")
             }
-            else if let country = placemarks?.first?.country,
-            let state = placemarks?.first?.administrativeArea,
+            else if let state = placemarks?.first?.administrativeArea,
             let city = placemarks?.first?.locality,
             let street = placemarks?.first?.thoroughfare {
-                let address = "\(street), \(city), \(state), \(country)"
+                let address = "\(street), \(city), \(state)"
                 completion(address)
             }
         }

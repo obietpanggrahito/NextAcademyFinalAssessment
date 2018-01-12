@@ -9,22 +9,37 @@
 import Foundation
 
 class Events {
-    var eventName = ""
-    var venue = ""
     var date = ""
-    var eventImageURL = ""
+    var description = ""
+    var imageURL = ""
+    var name = ""
+    var latitude = 0.0
+    var longitude = 0.0
+    var timeStamp = ""
+    var uid = ""
+    var venue = ""
     init() {}
     
     init(eventDetails: [String:Any]) {
-        if let eventName = eventDetails["eventName"] as? String,
-        let venue = eventDetails["venue"] as? String,
-        let date = eventDetails["date"] as? String,
-        let eventImageURL = eventDetails["eventImageURL"] as? String {
+        if let date = eventDetails["date"] as? String,
+            let description = eventDetails["description"] as? String,
+            let imageURL = eventDetails["imageURL"] as? String,
+            let name = eventDetails["name"] as? String,
+            let latitude = eventDetails["latitude"] as? Double,
+            let longitude = eventDetails["longitude"] as? Double,
+            let timeStamp = eventDetails["timeStamp"] as? String,
+            let uid = eventDetails["uid"] as? String,
+            let venue = eventDetails["venue"] as? String {
             
-            self.eventName = eventName
-            self.venue = venue
             self.date = date
-            self.eventImageURL = eventImageURL
+            self.description = description
+            self.imageURL = imageURL
+            self.name = name
+            self.latitude = latitude
+            self.longitude = longitude
+            self.timeStamp = timeStamp
+            self.uid = uid
+            self.venue = venue
         }
     }
 }

@@ -29,6 +29,9 @@
 		3DC124C12007682400873B61 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124C02007682400873B61 /* MapViewController.swift */; };
 		3DC124C3200768C500873B61 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124C2200768C500873B61 /* MapAnnotation.swift */; };
 		3DC124C520084B1F00873B61 /* GeocoderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124C420084B1F00873B61 /* GeocoderManager.swift */; };
+		3DC124C7200876A800873B61 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124C6200876A800873B61 /* LaunchViewController.swift */; };
+		3DC124CB20087DF500873B61 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124CA20087DF500873B61 /* FirebaseStorageManager.swift */; };
+		3DC124CD20088AB400873B61 /* ActivityIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124CC20088AB400873B61 /* ActivityIndicatorManager.swift */; };
 		8E643D7C60A78497114F4BEE /* Pods_NextAcademyFinalAssessment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6E1FAEA0339CABA397B024 /* Pods_NextAcademyFinalAssessment.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		3DC124C02007682400873B61 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3DC124C2200768C500873B61 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		3DC124C420084B1F00873B61 /* GeocoderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderManager.swift; sourceTree = "<group>"; };
+		3DC124C6200876A800873B61 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		3DC124CA20087DF500873B61 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		3DC124CC20088AB400873B61 /* ActivityIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorManager.swift; sourceTree = "<group>"; };
 		46F6AE1116B86124F9A53096 /* Pods-NextAcademyFinalAssessment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.debug.xcconfig"; sourceTree = "<group>"; };
 		579BA209DB26477271F0B1EB /* Pods-NextAcademyFinalAssessment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NextAcademyFinalAssessment.release.xcconfig"; path = "Pods/Target Support Files/Pods-NextAcademyFinalAssessment/Pods-NextAcademyFinalAssessment.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,13 +136,8 @@
 		3D134ECC200611A300D019EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D134ECF2006127600D019EC /* LoginViewController.swift */,
-				3D134ED12006128300D019EC /* SignUpViewController.swift */,
-				3DC124AE20071A8B00873B61 /* HomeViewController.swift */,
-				3DC124B020071A9F00873B61 /* PostViewController.swift */,
-				3DC124B220071AB200873B61 /* DetailViewController.swift */,
-				3DC124C02007682400873B61 /* MapViewController.swift */,
-				3DC124B420071AC100873B61 /* ProfileViewController.swift */,
+				3DC124C8200876D100873B61 /* Auth */,
+				3DC124C9200876DD00873B61 /* Main */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -144,11 +145,13 @@
 		3D134ECD200611BA00D019EC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				3D134ED320061E7C00D019EC /* SkyScannerTexfieldManager.swift */,
+				3DC124CC20088AB400873B61 /* ActivityIndicatorManager.swift */,
 				3D134ED520067D3C00D019EC /* AlertManager.swift */,
 				3DC124BC20073B7600873B61 /* DateFormatterManager.swift */,
-				3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */,
+				3DC124CA20087DF500873B61 /* FirebaseStorageManager.swift */,
 				3DC124C420084B1F00873B61 /* GeocoderManager.swift */,
+				3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */,
+				3D134ED320061E7C00D019EC /* SkyScannerTexfieldManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -160,6 +163,28 @@
 				3DC124B720071EDD00873B61 /* EventTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3DC124C8200876D100873B61 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3DC124C6200876A800873B61 /* LaunchViewController.swift */,
+				3D134ECF2006127600D019EC /* LoginViewController.swift */,
+				3D134ED12006128300D019EC /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		3DC124C9200876DD00873B61 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3DC124AE20071A8B00873B61 /* HomeViewController.swift */,
+				3DC124B020071A9F00873B61 /* PostViewController.swift */,
+				3DC124B220071AB200873B61 /* DetailViewController.swift */,
+				3DC124C02007682400873B61 /* MapViewController.swift */,
+				3DC124B420071AC100873B61 /* ProfileViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		6497E03B28565BEA9386847B /* Frameworks */ = {
@@ -322,12 +347,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DC124BD20073B7600873B61 /* DateFormatterManager.swift in Sources */,
+				3DC124C7200876A800873B61 /* LaunchViewController.swift in Sources */,
 				3D134ED22006128300D019EC /* SignUpViewController.swift in Sources */,
 				3DC124BB2007255800873B61 /* Events.swift in Sources */,
+				3DC124CB20087DF500873B61 /* FirebaseStorageManager.swift in Sources */,
 				3DC124C520084B1F00873B61 /* GeocoderManager.swift in Sources */,
 				3D134ED02006127600D019EC /* LoginViewController.swift in Sources */,
 				3DC124B120071A9F00873B61 /* PostViewController.swift in Sources */,
 				3D134ED620067D3C00D019EC /* AlertManager.swift in Sources */,
+				3DC124CD20088AB400873B61 /* ActivityIndicatorManager.swift in Sources */,
 				3D134EB520060A0F00D019EC /* AppDelegate.swift in Sources */,
 				3D134ED420061E7C00D019EC /* SkyScannerTexfieldManager.swift in Sources */,
 				3DC124B520071AC100873B61 /* ProfileViewController.swift in Sources */,

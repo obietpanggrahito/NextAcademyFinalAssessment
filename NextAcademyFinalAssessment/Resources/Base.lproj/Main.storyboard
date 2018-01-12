@@ -150,6 +150,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ruj-MW-PaL" secondAttribute="trailing" id="0hw-tC-D0V"/>
                                             <constraint firstItem="ZX3-oS-fU9" firstAttribute="top" secondItem="os7-V1-2tq" secondAttribute="top" id="1dD-0p-IiB"/>
                                             <constraint firstAttribute="trailing" secondItem="DtD-vJ-OH7" secondAttribute="trailing" constant="24" id="4dv-ml-Stp"/>
                                             <constraint firstAttribute="trailing" secondItem="Jfz-1J-u80" secondAttribute="trailing" constant="24" id="6sT-g8-ilo"/>
@@ -343,7 +344,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="UNM-RU-bMz">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sr6-Jp-253" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sr6-Jp-253" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xUU-Jd-ZpF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -366,7 +367,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1st-9V-t4t" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="user" selectedImage="userSelected" id="MRS-OB-TQG">
-                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-4"/>
                         <color key="badgeColor" red="0.16862745100000001" green="0.65098039220000004" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
