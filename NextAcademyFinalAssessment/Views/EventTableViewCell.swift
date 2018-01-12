@@ -45,7 +45,9 @@ class EventTableViewCell: UITableViewCell {
         eventNameLabel.text = event.name
         venueLabel.text = event.venue
         FirebaseStorageManager.shared.getImageFromStorage(event.imageURL) { (image) in
-            self.eventImageView.image = image
+            DispatchQueue.main.async {
+                self.eventImageView.image = image
+            }
         }
     }
 }

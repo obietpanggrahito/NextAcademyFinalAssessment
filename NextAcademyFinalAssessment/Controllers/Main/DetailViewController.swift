@@ -118,7 +118,8 @@ class DetailViewController: UIViewController {
     }
     
     @objc func joinButtonTapped() {
-        ref.child("users").child(currentUserID).child("joinedEvents").updateChildValues([event.id : true])
+        let timeStamp = ServerValue.timestamp()
+        ref.child("users").child(currentUserID).child("joinedEvents").child(event.id).updateChildValues(["timeStamp": timeStamp])
         setupJoinButton(joinedEvent: true)
     }
     
@@ -145,5 +146,9 @@ extension DetailViewController: MKMapViewDelegate {
             return marker
         }
         return nil
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapViewTapped()
     }
 }

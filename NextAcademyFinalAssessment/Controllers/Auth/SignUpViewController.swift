@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
     
     func writeToFirebase(firstname: String, lastName: String, email: String) {
         let ref = Database.database().reference()
-        let userInfo = ["firstName" : firstname, "lastName": lastName, "email" : email]
+        let userInfo = ["firstName": firstname, "lastName": lastName, "email": email, "imageURL": "http://clipart-library.com/images/pi7rn8LdT.png"]
         guard let currentUserID = Auth.auth().currentUser?.uid
             else { return }
         
