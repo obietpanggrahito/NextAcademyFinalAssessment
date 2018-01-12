@@ -40,11 +40,19 @@ class ProfileViewController: UIViewController {
     var ref = DatabaseReference()
     var events = [Event]()
     var currentUserID = ""
+    var cameHereBefore = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserDetails()
         fetchJoinedEventID()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if cameHereBefore == false {
+            cameHereBefore = true
+        }
     }
     
     // MARK: Fetch UserDetails
@@ -74,24 +82,37 @@ class ProfileViewController: UIViewController {
     // MARK: Fetch Events
     func fetchJoinedEventID() {
         ref.child("users").child(currentUserID).child("joinedEvents").queryOrdered(byChild: "timeStamp").observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.childrenCount == 0 && self.cameHereBefore {
+                self.eventTableView.reloadData()
+            }
+            
             for child in snapshot.children.reversed() {
                 guard let childSnapshot = child as? DataSnapshot else { return }
+                
                 let eventID = childSnapshot.key
-                self.fetchJoinedEventDetails(eventID: eventID)
+                let childCount = snapshot.childrenCount
+                self.fetchJoinedEventDetails(eventID: eventID, childCount: childCount)
             }
         }
     }
     
-    func fetchJoinedEventDetails(eventID: String) {
+    func fetchJoinedEventDetails(eventID: String, childCount: UInt) {
         ref.child("events").child(eventID).observeSingleEvent(of: .value) { (snapshot) in
             guard let eventDetails = snapshot.value as? [String : Any] else { return }
             let eventID = snapshot.key
             
             let event = Event(id: eventID, details: eventDetails)
             self.events.append(event)
-            if self.events.count == snapshot.childrenCount {
+            if self.events.count == childCount {
                 self.eventTableView.reloadData()
             }
+        }
+    }
+    
+    func reloadTableViewFromDetailViewController() {
+        if currentUserID != "" {
+            events.removeAll()
+            fetchJoinedEventID()
         }
     }
 }
@@ -117,6 +138,7 @@ extension ProfileViewController : UITableViewDelegate {
     
     // MARK: Table View Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if events.count == 0 { return }
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let controller = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             

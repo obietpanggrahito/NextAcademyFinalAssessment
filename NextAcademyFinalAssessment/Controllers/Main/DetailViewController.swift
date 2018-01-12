@@ -115,12 +115,23 @@ class DetailViewController: UIViewController {
     @objc func cancelButtonTapped() {
         ref.child("users").child(currentUserID).child("joinedEvents").child(event.id).removeValue()
         setupJoinButton(joinedEvent: false)
+        reloadProfileTableView()
     }
     
     @objc func joinButtonTapped() {
         let timeStamp = ServerValue.timestamp()
         ref.child("users").child(currentUserID).child("joinedEvents").child(event.id).updateChildValues(["timeStamp": timeStamp])
         setupJoinButton(joinedEvent: true)
+        reloadProfileTableView()
+    }
+    
+    func reloadProfileTableView() {
+        guard let viewControllers = self.tabBarController?.viewControllers,
+        let profileNavigationController = viewControllers[1] as? UINavigationController,
+        let profileViewController = profileNavigationController.childViewControllers.first as? ProfileViewController
+            else { return }
+        
+        profileViewController.reloadTableViewFromDetailViewController()
     }
     
     @objc func mapViewTapped() {
