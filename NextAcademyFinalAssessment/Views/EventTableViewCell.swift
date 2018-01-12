@@ -10,11 +10,21 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var eventImageView: UIImageView! {
+        didSet {
+            eventImageView.contentMode = .scaleAspectFill
+            eventImageView.clipsToBounds = true
+        }
+    }
+    
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var venueLabel: UILabel!
+    @IBOutlet weak var venueLabel: UILabel! {
+        didSet {
+            venueLabel.adjustsFontSizeToFitWidth = true
+        }
+    }
     
     static let cellIdentifier = "EventTableViewCell"
     static let cellNib = UINib(nibName: EventTableViewCell.cellIdentifier, bundle: Bundle.main)
@@ -29,13 +39,13 @@ class EventTableViewCell: UITableViewCell {
     
     func configureCell(with event: Event) {
         guard let date = DateFormatterManager.shared.storeDateFormatter.date(from: event.date) else {return}
+        monthLabel.text = DateFormatterManager.shared.monthFormatter.string(from: date).uppercased()
+        dateLabel.text = DateFormatterManager.shared.dayFormatter.string(from: date)
+        
+        eventNameLabel.text = event.name
+        venueLabel.text = event.venue
         FirebaseStorageManager.shared.getImageFromStorage(event.imageURL) { (image) in
-            
             self.eventImageView.image = image
-            self.monthLabel.text = DateFormatterManager.shared.monthFormatter.string(from: date)
-            self.dateLabel.text = DateFormatterManager.shared.dayFormatter.string(from: date)
-            self.eventNameLabel.text = event.name
-            self.venueLabel.text = event.venue
         }
     }
 }

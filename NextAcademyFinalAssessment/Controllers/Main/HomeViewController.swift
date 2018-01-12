@@ -21,8 +21,12 @@ class HomeViewController: UIViewController {
         didSet {
             eventTableView.dataSource = self
             eventTableView.delegate = self
-            eventTableView.tableFooterView = UIView()
             eventTableView.separatorStyle = .none
+            eventTableView.tableFooterView = UIView()
+            
+            let footer = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 13))
+            footer.backgroundColor = UIColor.groupTableViewBackground
+            eventTableView.tableFooterView = footer
             eventTableView.register(EventTableViewCell.cellNib, forCellReuseIdentifier: EventTableViewCell.cellIdentifier)
         }
     }
@@ -82,6 +86,7 @@ extension HomeViewController : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.cellIdentifier) as? EventTableViewCell
             else { return UITableViewCell() }
         
+        cell.selectionStyle = .none
         cell.configureCell(with: events[indexPath.row])
         return cell
     }

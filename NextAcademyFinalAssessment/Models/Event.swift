@@ -15,7 +15,7 @@ class Event {
     var name = ""
     var latitude = 0.0
     var longitude = 0.0
-    var timeStamp = ""
+    var timeStamp = 0
     var uid = ""
     var venue = ""
     init() {}
@@ -27,7 +27,7 @@ class Event {
             let name = eventDetails["name"] as? String,
             let latitude = eventDetails["latitude"] as? Double,
             let longitude = eventDetails["longitude"] as? Double,
-            let timeStamp = eventDetails["timeStamp"] as? String,
+            let timeStamp = eventDetails["timeStamp"] as? Int,
             let uid = eventDetails["uid"] as? String,
             let venue = eventDetails["venue"] as? String {
             

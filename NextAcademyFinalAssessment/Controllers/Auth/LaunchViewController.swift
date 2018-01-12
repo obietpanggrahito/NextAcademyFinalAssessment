@@ -38,7 +38,7 @@ class LaunchViewController: UIViewController {
     }
     
     func directUserToLogin() {
-        let authStoryboard = UIStoryboard(name: "Registration", bundle: nil)
+        let authStoryboard = UIStoryboard(name: "Auth", bundle: nil)
         if let controller = authStoryboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
             present(controller, animated: true, completion: nil)
         }

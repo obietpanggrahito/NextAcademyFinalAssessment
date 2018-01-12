@@ -180,8 +180,8 @@
 			children = (
 				3DC124AE20071A8B00873B61 /* HomeViewController.swift */,
 				3DC124B020071A9F00873B61 /* PostViewController.swift */,
-				3DC124B220071AB200873B61 /* DetailViewController.swift */,
 				3DC124C02007682400873B61 /* MapViewController.swift */,
+				3DC124B220071AB200873B61 /* DetailViewController.swift */,
 				3DC124B420071AC100873B61 /* ProfileViewController.swift */,
 			);
 			path = Main;
