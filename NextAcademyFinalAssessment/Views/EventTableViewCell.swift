@@ -27,4 +27,15 @@ class EventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func configureCell(with event: Event) {
+        guard let date = DateFormatterManager.shared.storeDateFormatter.date(from: event.date) else {return}
+        FirebaseStorageManager.shared.getImageFromStorage(event.imageURL) { (image) in
+            
+            self.eventImageView.image = image
+            self.monthLabel.text = DateFormatterManager.shared.monthFormatter.string(from: date)
+            self.dateLabel.text = DateFormatterManager.shared.dayFormatter.string(from: date)
+            self.eventNameLabel.text = event.name
+            self.venueLabel.text = event.venue
+        }
+    }
 }

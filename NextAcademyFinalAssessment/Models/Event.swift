@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Events {
+class Event {
     var date = ""
     var description = ""
     var imageURL = ""

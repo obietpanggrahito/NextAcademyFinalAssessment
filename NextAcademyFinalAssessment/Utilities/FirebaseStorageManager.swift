@@ -35,7 +35,40 @@ class FirebaseStorageManager {
         }
     }
     
-    func getImageFromStorage() {
+    func getImageFromStorage(_ urlString: String, completion: @escaping(UIImage?) -> Void) {
+        let imageCache = NSCache<NSString, AnyObject>()
         
+        guard let url = URL(string: urlString) else {
+            return completion(nil)
+        }
+        
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage {
+            completion(cachedImage)
+            return
+        }
+        
+        DispatchQueue.global().async {
+            let task = URLSession(configuration: .default).dataTask(with: url) { (data, response, error) in
+                guard error == nil else {
+                    print("error: \(String(describing: error))")
+                    return completion(nil)
+                }
+                guard response != nil else {
+                    print("no response")
+                    return completion(nil)
+                }
+                guard data != nil else {
+                    print("no data")
+                    return completion(nil)
+                }
+                
+                DispatchQueue.main.async {
+                    guard let data = data,
+                        let image = UIImage(data: data) else{return}
+                    imageCache.setObject(image, forKey: urlString as NSString)
+                    completion(image)
+                }
+            }; task.resume()
+        }
     }
 }

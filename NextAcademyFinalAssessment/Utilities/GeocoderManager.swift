@@ -12,7 +12,7 @@ import CoreLocation
 class GeocoderManager {
     static var shared = GeocoderManager()
     
-    func getAddressFromALocation(location: CLLocation, completion: @escaping(String) -> ()) { //Some people use CLLocation
+    func getAddressFromALocation(location: CLLocation, completion: @escaping(String) -> ()) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
             if let error = error {
                 print("Get Address Error: \(error)")

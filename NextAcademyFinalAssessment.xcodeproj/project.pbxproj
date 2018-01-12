@@ -23,7 +23,7 @@
 		3DC124B520071AC100873B61 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124B420071AC100873B61 /* ProfileViewController.swift */; };
 		3DC124B820071EDD00873B61 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124B620071EDD00873B61 /* EventTableViewCell.swift */; };
 		3DC124B920071EDD00873B61 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC124B720071EDD00873B61 /* EventTableViewCell.xib */; };
-		3DC124BB2007255800873B61 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BA2007255800873B61 /* Events.swift */; };
+		3DC124BB2007255800873B61 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BA2007255800873B61 /* Event.swift */; };
 		3DC124BD20073B7600873B61 /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BC20073B7600873B61 /* DateFormatterManager.swift */; };
 		3DC124BF20074CBA00873B61 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */; };
 		3DC124C12007682400873B61 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC124C02007682400873B61 /* MapViewController.swift */; };
@@ -55,7 +55,7 @@
 		3DC124B420071AC100873B61 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3DC124B620071EDD00873B61 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		3DC124B720071EDD00873B61 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
-		3DC124BA2007255800873B61 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		3DC124BA2007255800873B61 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3DC124BC20073B7600873B61 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		3DC124BE20074CBA00873B61 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		3DC124C02007682400873B61 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		3D134ECB2006119C00D019EC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3DC124BA2007255800873B61 /* Events.swift */,
+				3DC124BA2007255800873B61 /* Event.swift */,
 				3DC124C2200768C500873B61 /* MapAnnotation.swift */,
 			);
 			path = Models;
@@ -349,7 +349,7 @@
 				3DC124BD20073B7600873B61 /* DateFormatterManager.swift in Sources */,
 				3DC124C7200876A800873B61 /* LaunchViewController.swift in Sources */,
 				3D134ED22006128300D019EC /* SignUpViewController.swift in Sources */,
-				3DC124BB2007255800873B61 /* Events.swift in Sources */,
+				3DC124BB2007255800873B61 /* Event.swift in Sources */,
 				3DC124CB20087DF500873B61 /* FirebaseStorageManager.swift in Sources */,
 				3DC124C520084B1F00873B61 /* GeocoderManager.swift in Sources */,
 				3D134ED02006127600D019EC /* LoginViewController.swift in Sources */,

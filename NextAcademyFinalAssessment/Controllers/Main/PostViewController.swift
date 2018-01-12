@@ -124,18 +124,6 @@ class PostViewController: UIViewController {
             }
         }
     }
-    
-    func getFormattedDate() {
-        let storedDateString = DateFormatterManager.shared.storeDateFormatter.string(from: choosenDate)
-        //getting the day and month string from stored dateString.
-        
-        guard let date = DateFormatterManager.shared.storeDateFormatter.date(from: storedDateString) else {return}
-        
-        let monthName = DateFormatterManager.shared.monthFormatter.string(from: date)
-        
-        let day = DateFormatterManager.shared.dayFormatter.string(from: date)
-
-    }
 }
 
 extension PostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

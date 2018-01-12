@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var sortSegmentedControl: UISegmentedControl! {
         didSet {
-            sortSegmentedControl.addTarget(self, action: #selector(sortSegmentedControlTapped), for: .valueChanged)
+            sortSegmentedControl.addTarget(self, action: #selector(sortSegmentedControlTapped(sender:)), for: .valueChanged)
         }
     }
     
@@ -29,22 +29,37 @@ class HomeViewController: UIViewController {
     
     // MARK: Variables
     var ref = DatabaseReference()
-    var events = [Events]()
+    var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        fetchEvents()
+        fetchEventsBasedOnRecent()
     }
     
-    @objc func sortSegmentedControlTapped() {
+    @objc func sortSegmentedControlTapped(sender: UISegmentedControl) {
         
     }
     
     // MARK: Firebase Call
-    func fetchEvents() {
-        //ref.child("events").child(<#T##pathString: String##String#>)
-        
+    func fetchEventsBasedOnRecent() {
+        ref.child("events").queryOrdered(byChild: "timeStamp").observeSingleEvent(of: .value) { (snapshot) in
+            for child in snapshot.children.reversed() {
+                
+                guard let childSnapshot = child as? DataSnapshot,
+                let eventDetails = childSnapshot.value as? [String : Any]
+                    else { return }
+                
+                let event = Event(eventDetails: eventDetails)
+                self.events.append(event)
+                if self.events.count == snapshot.childrenCount {
+                    self.eventTableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func fetchEventsBasedOnLocation() {
         
     }
 
@@ -57,6 +72,8 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController : UITableViewDataSource {
+    
+    // MARK: Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
@@ -65,12 +82,22 @@ extension HomeViewController : UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EventTableViewCell.cellIdentifier) as? EventTableViewCell
             else { return UITableViewCell() }
         
+        cell.configureCell(with: events[indexPath.row])
         return cell
     }
 }
 
 extension HomeViewController : UITableViewDelegate {
+    
+    // MARK: Table View Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        if let controller = mainStoryboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            
+            controller.event = events[indexPath.row]
+            self.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(controller, animated: true)
+            self.hidesBottomBarWhenPushed = false
+        }
     }
 }
