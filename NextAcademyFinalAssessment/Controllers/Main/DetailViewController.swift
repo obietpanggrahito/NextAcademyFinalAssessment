@@ -28,6 +28,8 @@ class DetailViewController: UIViewController {
     }
     
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTitleLabel: UILabel!
+    
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
             let tap = UITapGestureRecognizer(target: self, action: #selector(mapViewTapped))
@@ -96,6 +98,9 @@ class DetailViewController: UIViewController {
         dateLabel.text = DateFormatterManager.shared.showADateFormatter.string(from: date)
         venueLabel.text = event.venue
         descriptionLabel.text = event.description
+        if event.description == "" {
+            descriptionTitleLabel.isHidden = true
+        }
         
         createAnAnnotation(latitude: event.latitude, longitude: event.longitude)
         FirebaseStorageManager.shared.getImageFromStorage(event.imageURL) { (image) in

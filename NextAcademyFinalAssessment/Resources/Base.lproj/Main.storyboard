@@ -95,7 +95,7 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q7C-m6-uBq">
                                                 <rect key="frame" x="24" y="564" width="327" height="42"/>
-                                                <color key="backgroundColor" red="0.16862745100000001" green="0.65098039220000004" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.16862745100000001" green="0.65098039220000004" blue="0.17254901959999999" alpha="0.30056720889999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="tX5-ET-c0k"/>
                                                 </constraints>
@@ -512,6 +512,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="Izv-Ab-9zs" id="UeV-e5-d7X"/>
                         <outlet property="descriptionLabel" destination="uZa-EJ-PXI" id="nyH-9G-g7F"/>
+                        <outlet property="descriptionTitleLabel" destination="p1d-ki-yW8" id="Onj-Hs-jTx"/>
                         <outlet property="eventImageView" destination="oWR-fK-uNr" id="TTx-42-Ax5"/>
                         <outlet property="eventNameLabel" destination="HNp-zi-7LR" id="PAx-0q-oI9"/>
                         <outlet property="joinButton" destination="geV-V9-u3A" id="4Oa-iT-qI3"/>

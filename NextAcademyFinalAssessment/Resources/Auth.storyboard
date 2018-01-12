@@ -23,15 +23,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a launch page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gJ-1J-z13">
-                                <rect key="frame" x="107" y="323" width="161" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="EQU-M1-mm2">
+                                <rect key="frame" x="107.5" y="253.5" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="tgQ-cJ-GhQ"/>
+                                    <constraint firstAttribute="width" constant="160" id="xg3-vo-lZb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EQU-M1-mm2" firstAttribute="centerX" secondItem="6bB-9A-Eu2" secondAttribute="centerX" id="mLK-1a-yBg"/>
+                            <constraint firstItem="EQU-M1-mm2" firstAttribute="centerY" secondItem="6bB-9A-Eu2" secondAttribute="centerY" id="nOH-cY-4ji"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wrm-GK-1Xa"/>
                     </view>
                 </viewController>
@@ -175,6 +179,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="launchScreen" width="512" height="512"/>
         <image name="left arrow" width="13" height="24"/>
     </resources>
 </document>

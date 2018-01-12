@@ -57,6 +57,7 @@ class PostViewController: UIViewController {
     @IBOutlet weak var publishButton: UIButton! {
         didSet {
             publishButton.addTarget(self, action: #selector(publishButtonTapped), for: .touchUpInside)
+            publishButton.isEnabled = false
         }
     }
     
@@ -74,6 +75,10 @@ class PostViewController: UIViewController {
         setTextViewPlaceHolder(with: descriptionTextView)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: Setups
     func setupEventDatePicker() {
         let toolbar = UIToolbar()
@@ -87,12 +92,24 @@ class PostViewController: UIViewController {
         eventDateTextField.inputAccessoryView = toolbar
         eventDateTextField.inputView = datePicker
         datePicker.datePickerMode = .date
+        datePicker.minimumDate = Date()
     }
     
     @objc func donePickingDateTapped() {
         choosenDate = datePicker.date
         eventDateTextField.text = DateFormatterManager.shared.showADateFormatter.string(from: choosenDate)
         self.view.endEditing(true)
+    }
+    
+    func enableThePublishButtonIfInformationIsComplete() {
+        if eventNameTextField.text != "" && eventDateTextField.text != "" && venueTextField.text != "" {
+            publishButton.isEnabled = true
+            publishButton.backgroundColor = #colorLiteral(red: 0.168627451, green: 0.6509803922, blue: 0.1725490196, alpha: 1)
+        }
+        else {
+            publishButton.isEnabled = false
+            publishButton.backgroundColor = #colorLiteral(red: 0.168627451, green: 0.6509803922, blue: 0.1725490196, alpha: 0.3005672089)
+        }
     }
     
     // MARK: Actions
@@ -105,12 +122,17 @@ class PostViewController: UIViewController {
         
         guard let currentUserID = Auth.auth().currentUser?.uid,
         let eventName = eventNameTextField.text,
-        let description = descriptionTextView.text
+        let descriptionString = descriptionTextView.text
             else { return }
         
         let timeStamp = ServerValue.timestamp()
         let ref = Database.database().reference()
         let choosenDateInString = DateFormatterManager.shared.storeDateFormatter.string(from: choosenDate)
+        
+        var description = descriptionString
+        if description == "Description" {
+            description = ""
+        }
         
         FirebaseStorageManager.shared.uploadImageToStorage(eventImage, path: "events", imageName: eventName) { (urlString, errorMessage) in
             if errorMessage == nil {
@@ -166,7 +188,7 @@ extension PostViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == venueTextField {
-            textField.resignFirstResponder()
+            self.view.endEditing(true)
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             if let controller = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
                 
@@ -181,6 +203,10 @@ extension PostViewController: UITextFieldDelegate {
                 self.hidesBottomBarWhenPushed = false
             }
         }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        enableThePublishButtonIfInformationIsComplete()
     }
 }
 
@@ -205,6 +231,7 @@ extension PostViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         viewBelowDescriptionTextView.backgroundColor = .darkGray
         setTextViewPlaceHolder(with: textView)
+        enableThePublishButtonIfInformationIsComplete()
     }
     
     func setTextViewPlaceHolder(with sender:UITextView) {

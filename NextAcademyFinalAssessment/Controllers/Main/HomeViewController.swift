@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class HomeViewController: UIViewController {
 
@@ -34,15 +35,43 @@ class HomeViewController: UIViewController {
     // MARK: Variables
     var ref = DatabaseReference()
     var events = [Event]()
+    let locationManager = CLLocationManager()
+    var currentLocation = CLLocation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         fetchEventsBasedOnRecent()
+        setupCLLocationManager()
+    }
+    
+    func setupCLLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     
     @objc func sortSegmentedControlTapped(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            events.removeAll()
+            fetchEventsBasedOnRecent()
+        }
+        else {
+            sortBasedOnDistance()
+        }
+    }
+    
+    func sortBasedOnDistance() {
+        for event in events {
+            let eventLocation = CLLocation(latitude: event.latitude, longitude: event.longitude)
+            
+            let distance = currentLocation.distance(from: eventLocation)
+            print(distance)
+            
+            
         
+        }
     }
     
     // MARK: Firebase Call
@@ -77,7 +106,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController : UITableViewDataSource {
-    
     // MARK: Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
@@ -94,7 +122,6 @@ extension HomeViewController : UITableViewDataSource {
 }
 
 extension HomeViewController : UITableViewDelegate {
-    
     // MARK: Table View Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -105,5 +132,26 @@ extension HomeViewController : UITableViewDelegate {
             self.navigationController?.pushViewController(controller, animated: true)
             self.hidesBottomBarWhenPushed = false
         }
+    }
+}
+
+extension HomeViewController : CLLocationManagerDelegate {
+    // MARK: CLLocation Delegate
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            currentLocation = CLLocation(latitude: latitude, longitude: longitude)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("User Location Error: \(error)")
     }
 }
